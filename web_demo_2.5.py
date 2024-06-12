@@ -17,7 +17,7 @@ from transformers import AutoModel, AutoTokenizer
 # PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 
 # Argparser
-parser = argparse.ArgumentParser(description='demo')
+parser = argparse.ArgumentParser(description='Wildcoin Demo')
 parser.add_argument('--device', type=str, default='cuda', help='cuda or mps')
 args = parser.parse_args()
 device = args.device
@@ -252,5 +252,5 @@ with gr.Blocks() as demo:
             bt_pic.upload(lambda: None, None, chat_bot, queue=False).then(upload_img, inputs=[bt_pic,chat_bot,app_session], outputs=[chat_bot,app_session])
 
 # launch
-demo.launch(share=False, debug=True, show_api=False, server_port=8080, server_name="0.0.0.0")
+demo.launch(share=True, debug=True, show_api=False, server_port=8080, server_name="0.0.0.0")
 
