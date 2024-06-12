@@ -26,7 +26,7 @@ git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
 
 # Create a virtual environment
-python -m venv mincpm-llama3-v25-venv
+python -m venv mincpm-llama3-v25-venv 
 
 # Activate the virtual environment
 # On Windows
@@ -41,17 +41,20 @@ Install the required packages using pip.
 pip install -r requirements.txt
 ```
 
-Running the API
-For Nvidia GPUs
+# Running the API
+
+### For Nvidia GPUs
+
 Ensure you have CUDA installed and available. Run the following command:
 
 ```bash
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload -- --device cuda
 ```
 For Mac with MPS (Apple Silicon or AMD GPUs)
 Enable MPS support and run the API using:
 
-PYTORCH_ENABLE_MPS_FALLBACK=1 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+PYTORCH_ENABLE_MPS_FALLBACK=1 python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload -- --device mps
+
 
 
 ```bash

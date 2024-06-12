@@ -5,8 +5,8 @@ from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
 class ImageChatModel:
-    def __init__(self):
-        self.device = 'mps' if torch.has_mps else 'cpu'
+    def __init__(self, device: str = 'cpu'):
+        self.device = device
         self.model = AutoModel.from_pretrained('openbmb/MiniCPM-Llama3-V-2_5', trust_remote_code=True, low_cpu_mem_usage=True)
         self.model = self.model.to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-Llama3-V-2_5', trust_remote_code=True)
