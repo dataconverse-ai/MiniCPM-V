@@ -48,7 +48,7 @@ pip install -r requirements.txt
 Ensure you have CUDA installed and available. Run the following command:
 
 ```bash
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload -- --device cuda
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --device cuda
 ```
 For Mac with MPS (Apple Silicon or AMD GPUs)
 Enable MPS support and run the API using:
